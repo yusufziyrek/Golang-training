@@ -4,15 +4,14 @@ import "fmt"
 
 func main() {
 
-	// degiskenler()
-
-	prints()
+	//degiskenler()
+	printIslemleri()
 }
 
-func degiskenler(){
+func degiskenler() {
 
-    // String
-	
+	// String
+
 	var name string = "Yusuf"
 	var surname string = "Ziyrek"
 	var school string
@@ -56,19 +55,31 @@ func degiskenler(){
 
 }
 
-func prints(){
+func printIslemleri() {
 
 	// Standart print islemleri
 
 	fmt.Print("Tek satır cümle \n")
 	fmt.Println("Yeni satıra geçiren cümle")
 	fmt.Println("Yeni satır cümlesi")
-	
-	// Formatlı cümle
 
+	// Formatlı cümle
 	var name string = "Yusuf"
 	var age int = 22
+	fmt.Printf("Your name : %v , Your age : %v \n", name, age)
 
-	fmt.Printf("Your name : %v , Your age : %v" ,name,age)
+	// String degiskenlerini tırnak içine alır
+	fmt.Printf("Your name : %q , Your age : %q \n", name, age)
+
+	// Degiskenin tipini belirtir
+	fmt.Printf("The type of the variable \"name\" is %T \n", name)
+
+	// Ondalıklı sayıları bastırmaya yarar ve istediğimiz kadar hane alabiliriz
+	var price float32 = 31.69
+	fmt.Printf("The price is : %0.01f \n", price)
+
+	// Formatlanmış metni değişkene atar "Sprintf"
+	var text string = fmt.Sprintf("The price is : %0.03f", price)
+	fmt.Println(text)
+
 }
-
