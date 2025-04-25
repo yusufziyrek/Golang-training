@@ -1,11 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
 	//degiskenler()
-	printIslemleri()
+	//printIslemleri()
+	//kosullar()
+	//diziler()
+	donguler()
 }
 
 func degiskenler() {
@@ -82,4 +87,67 @@ func printIslemleri() {
 	var text string = fmt.Sprintf("The price is : %0.03f", price)
 	fmt.Println(text)
 
+}
+
+func kosullar() {
+
+	var not int = 13
+
+	if 90 <= not && not <= 100 {
+		fmt.Println("AA")
+	} else if 70 <= not && not <= 89 {
+		fmt.Println("BB")
+	} else if 50 <= not && not <= 69 {
+		fmt.Println("CC")
+	} else if 30 <= not && not <= 49 {
+		fmt.Println("DD")
+	} else {
+		fmt.Println("FF")
+	}
+
+}
+
+func diziler() {
+
+	// Array "Statik yapı"
+	isimler := [3]string{"Yusuf", "Akif", "Cengiz"}
+	fmt.Println("İsimler : ", isimler)
+	fmt.Println("İlk eleman : ", isimler[0])
+	isimler[2] = "Mert"
+	fmt.Println(isimler)
+
+	fmt.Println("------")
+
+	// Slice "Dinamik yapı"
+	maaslar := []float32{10.9, 15.2, 35.2}
+	fmt.Println("Maaşlar : ", maaslar)
+	maaslar = append(maaslar, 69.3) // Veri ekleme
+	fmt.Println(maaslar)
+	maaslar = maaslar[0:3] // 4.elemana kadar al gerisini sil
+	fmt.Println("Yeni maaşlar", maaslar)
+	fmt.Println(len(maaslar)) // Uzunluk
+
+}
+
+func donguler() {
+
+	// Standart for
+	for i := 0; i < 5; i++ {
+		fmt.Println(i)
+
+	}
+
+	// While benzeri for
+	count := 5
+	for 0 < count {
+		fmt.Println(count)
+		count--
+	}
+
+	// Foreach benzeri for
+	array := []string{"Yusuf", "Akif", "Doğukan", "Cengiz"}
+	for index, value := range array {
+		fmt.Println("Index : ", index, "Value : ", value)
+
+	}
 }
