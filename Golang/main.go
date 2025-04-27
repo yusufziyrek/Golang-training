@@ -8,12 +8,16 @@ func main() {
 
 	// Paket kullanımları
 
-	training.Degiskenler()
+	/*training.Degiskenler()
 	training.PrintIslemleri()
-	//kosullar()
-	//diziler()
-	//mapler()
-	//donguler()
-	//fmt.Println(alanHesapla(3))
+	training.Kosullar()
+	training.Diziler()
+	training.Mapler()
+	training.Donguler()
+	fmt.Println(training.AlanHesapla(3))
+	*/
+
+	// -- Pointer kullanımı --
+	training.Pointer()
 
 }
