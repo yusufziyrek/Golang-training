@@ -23,7 +23,8 @@ func New(id string, name string, age int, department string, lectures []string) 
 
 }
 
-func ShowInfo(s Student) {
+// Receiver kullanımı - Oluşturulan obje üzerinden işlem yapabilme olanağı sağlar !!
+func (s *Student) ShowInfo() {
 	fmt.Println(
 		"-------------\n",
 		"Id : ", s.Id, "\n",
