@@ -1,8 +1,10 @@
 package main
 
 import (
-	"go_training.go/training"
+	"go_training.go/student"
 )
+
+//"go_training.go/training"
 
 func main() {
 
@@ -18,6 +20,11 @@ func main() {
 	*/
 
 	// -- Pointer kullanımı --
-	training.Pointer()
+	//training.Pointer()
 
+	s1 := student.New("1", "Yusuf",23, "CENG", []string{"Math", "Machine Learning", "Computer Organization"})
+	s2 := student.New("2", "Akif", 22, "CENG", []string{"Math", "Machine Learning"})
+
+	student.ShowInfo(s1)
+	student.ShowInfo(s2)
 }
