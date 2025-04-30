@@ -27,19 +27,22 @@ func New(id string, name string, age int, department string, lectures []string) 
 }
 
 // Receiver kullanımı - Oluşturulan obje üzerinden işlem yapabilme olanağı sağlar !!
-// Standart receiver obje kopyası üzerinde işlem yapar. Objenin özelliklerini değiştiremez !!
+
+// Value receiver, obje kopyası üzerinde işlem yapar. Objenin özelliklerini değiştiremez !!
 func (s Student) ShowInfo() {
-	fmt.Println(
-		"-------------\n",
-		"Id : ", s.Id, "\n",
-		"Name : ", s.Name, "\n",
-		"Age : ", s.Age, "\n",
-		"Department : ", s.Department, "\n",
-		"Lectures : ", s.Lectures,
+	fmt.Printf(
+		"-------------\n"+
+			"Id : %s\n"+
+			"Name : %s\n"+
+			"Age : %d\n"+
+			"Department : %s\n"+
+			"Lectures : %v\n"+
+			"-------------\n",
+		s.Id, s.Name, s.Age, s.Department, s.Lectures,
 	)
 }
 
-// Orjinal obje üzerinde değişiklik yapmak için pointer receiver kullanımı gerekli !! -- (*Student) --
+// Pointer receiver, orjinal obje üzerinde değişiklik yapabilme imkanı sağlar !! -- (*Student) --
 func (s *Student) Rename(newName string) {
 	s.Name = newName
 }
@@ -57,7 +60,7 @@ func CreateWithScan() Student {
 	fmt.Print("Your department : ")
 	fmt.Scan(&department)
 	fmt.Print("Your lectures with , : ")
-	fmt.Scan(&lecturesText)                      
+	fmt.Scan(&lecturesText)
 	lectures := strings.Split(lecturesText, ",") // Virgülle ayrılmış dersler
 
 	newStudent := Student{
