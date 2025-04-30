@@ -5,8 +5,10 @@ import (
 	"strings"
 )
 
+var nextId int
+
 type Student struct {
-	Id         string
+	Id         int
 	Name       string
 	Age        int
 	Department string
@@ -14,10 +16,13 @@ type Student struct {
 }
 
 // Constructor metod
-func New(id string, name string, age int, department string, lectures []string) Student {
+func New(name string, age int, department string, lectures []string) Student {
+
+	nextId++
 
 	return Student{
-		Id:         id,
+
+		Id:         nextId,
 		Name:       name,
 		Age:        age,
 		Department: department,
@@ -32,7 +37,7 @@ func New(id string, name string, age int, department string, lectures []string) 
 func (s Student) ShowInfo() {
 	fmt.Printf(
 		"-------------\n"+
-			"Id : %s\n"+
+			"Id : %d\n"+
 			"Name : %s\n"+
 			"Age : %d\n"+
 			"Department : %s\n"+
@@ -49,10 +54,9 @@ func (s *Student) Rename(newName string) {
 
 func CreateWithScan() Student {
 
-	var id, name, department, lecturesText string
+	var name, department, lecturesText string
 	var age int
-	fmt.Print("Your id : ")
-	fmt.Scan(&id)
+
 	fmt.Print("Your name : ")
 	fmt.Scan(&name)
 	fmt.Print("Your age : ")
@@ -61,10 +65,12 @@ func CreateWithScan() Student {
 	fmt.Scan(&department)
 	fmt.Print("Your lectures with , : ")
 	fmt.Scan(&lecturesText)
-	lectures := strings.Split(lecturesText, ",") // Virgülle ayrılmış dersler
+	lectures := strings.Split(lecturesText, ",")
+
+	nextId++
 
 	newStudent := Student{
-		Id:         id,
+		Id:         nextId,
 		Name:       name,
 		Age:        age,
 		Department: department,
