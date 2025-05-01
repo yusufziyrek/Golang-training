@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"go_training.go/student"
+	"go_training.go/training"
 )
 
 func main() {
@@ -33,7 +34,18 @@ func main() {
 	//student := student.CreateWithScan()
 	//student.ShowInfo()
 
-	switchProcess()
+	//switchProcess()
+
+	// !! Interface kullanımı !!
+
+	var shape training.Shape
+	c := training.Circle{Radius: 5}
+	shape = c
+	fmt.Println("Dairenin Alanı:", shape.Area()) // Alan hesaplanır
+
+	r := training.Rectangle{Width: 4, Height: 6}
+	shape = r
+	fmt.Println("Dikdörtgenin Alanı:", shape.Area()) // Alan hesaplanır
 
 }
 
@@ -49,7 +61,8 @@ main_lopp:
 		fmt.Println(
 			"1- Öğrenci eklemek\n" +
 				"2- Öğrencileri listele\n" +
-				"3- Çıkış yap",
+				"3- Dosyaya kaydet\n" +
+				"4- Çıkış yap",
 		)
 
 		fmt.Scan(&secim)
@@ -59,12 +72,14 @@ main_lopp:
 			studentList = append(studentList, newStudent)
 		case 2:
 			if len(studentList) == 0 {
-				fmt.Println("!! Listenizde öğrenci bulunmamakta !!")
+				fmt.Println("\n!! Listenizde öğrenci bulunmamakta !!")
 			}
 			for _, student := range studentList {
 				student.ShowInfo()
 			}
 		case 3:
+			student.SaveToFile(studentList)
+		case 4:
 			fmt.Println("!! Çıkış yaptınız !!")
 			break main_lopp
 		default:
