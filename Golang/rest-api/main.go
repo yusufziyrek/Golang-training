@@ -1,13 +1,11 @@
 package main
 
 import (
-	"github.com/go-playground/validator"
 	"github.com/gofiber/fiber/v2"
 	"rest_api.go/dal"
 	"rest_api.go/database"
+	"rest_api.go/services"
 )
-
-var validate = validator.New()
 
 func main() {
 
@@ -27,39 +25,7 @@ func main() {
 		Title string `validate:"required"`
 	}
 
-	app.Post("/todo", func(c *fiber.Ctx) error {
-		t := new(TodoCreate)
-
-		err := c.BodyParser(t)
-		if err != nil {
-			return c.Status(400).JSON(fiber.Map{
-				"message": "Bad Request",
-			})
-		}
-
-		if err := validate.Struct(t); err != nil {
-			return c.Status(400).JSON(fiber.Map{
-				"message": err.Error(),
-			})
-		}
-
-		newTodo := dal.Todo{
-			Title: t.Title,
-		}
-
-		result := database.DB.Create(&newTodo)
-
-		if result.Error != nil {
-			return c.Status(500).JSON(fiber.Map{
-				"message": "Failed to create",
-			})
-		}
-
-		return c.JSON(fiber.Map{
-			"message": "Created succesfully",
-		})
-
-	})
+	app.Post("/todo", services.CreateTodo)
 
 	app.Listen("localhost:8080")
 }
