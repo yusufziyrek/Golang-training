@@ -14,8 +14,9 @@ func main() {
 
 	app := fiber.New()
 
-	app.Post("/todo", services.CreateTodo)
 	app.Get("/todo", services.GetAllTodo)
+	app.Get("/todo/:id", services.GetById)
+	app.Post("/todo", services.CreateTodo)
 
 	app.Listen("localhost:8080")
 }
