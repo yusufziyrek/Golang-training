@@ -14,18 +14,8 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/hello", func(c *fiber.Ctx) error {
-
-		return c.JSON(fiber.Map{
-			"message": "Hello World",
-		})
-	})
-
-	type TodoCreate struct {
-		Title string `validate:"required"`
-	}
-
 	app.Post("/todo", services.CreateTodo)
+	app.Get("/todo", services.GetAllTodo)
 
 	app.Listen("localhost:8080")
 }

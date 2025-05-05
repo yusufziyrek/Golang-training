@@ -1,16 +1,16 @@
 package services
 
 import (
-	"github.com/go-playground/validator"
-	"github.com/gofiber/fiber"
+	"github.com/go-playground/validator/v10"
+	"github.com/gofiber/fiber/v2"
 	"rest_api.go/dal"
-	"rest_api.go/database"
+	"rest_api.go/types"
 )
 
 var validate = validator.New()
 
 func CreateTodo(c *fiber.Ctx) error {
-	t := new(TodoCreate)
+	t := new(types.TodoCreateDTO)
 
 	err := c.BodyParser(t)
 	if err != nil {
@@ -29,16 +29,20 @@ func CreateTodo(c *fiber.Ctx) error {
 		Title: t.Title,
 	}
 
-	result := database.DB.Create(&newTodo)
+	result := dal.CreateTodo(&newTodo)
 
 	if result.Error != nil {
 		return c.Status(500).JSON(fiber.Map{
-			"message": "Failed to create",
+			"message": "Failed to create todo",
 		})
 	}
 
 	return c.JSON(fiber.Map{
-		"message": "Created succesfully",
+		"message": "Todo Created succesfully",
 	})
 
+}
+
+func GetAllTodo(c *fiber.Ctx) error {
+	return c.JSON("")
 }
