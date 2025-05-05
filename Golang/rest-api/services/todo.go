@@ -44,5 +44,14 @@ func CreateTodo(c *fiber.Ctx) error {
 }
 
 func GetAllTodo(c *fiber.Ctx) error {
-	return c.JSON("")
+	todos := []types.TodoResponseDTO{}
+
+	result := dal.GetAllTodo(&todos)
+	if result.Error != nil {
+		return c.Status(500).JSON(fiber.Map{
+			"message": "Failed to get todos",
+		})
+	}
+
+	return c.JSON(todos)
 }

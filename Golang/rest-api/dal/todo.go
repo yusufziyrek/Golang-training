@@ -14,3 +14,8 @@ type Todo struct {
 func CreateTodo(todo *Todo) *gorm.DB {
 	return database.DB.Create(&todo)
 }
+
+func GetAllTodo(dest any) *gorm.DB {
+	return database.DB.Model(&Todo{}).Find(dest)
+
+}
