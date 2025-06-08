@@ -4,11 +4,11 @@ import "fmt"
 
 func main() {
 
-	/*for i := 0; i < 10; i++ {
+	/*for i := 0; i < 100000; i++ {
 		fmt.Println(i)
-	}
+	}*/
 
-	i := 0
+	/*i := 0
 	for i < 10 {
 		fmt.Println(i)
 		i++
