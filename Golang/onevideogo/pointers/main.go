@@ -25,12 +25,22 @@ func main() {
 	*p = 20
 	fmt.Println(a, b) */
 
-	x := 10
+	/* x := 10
 	changeValue(&x)
-	fmt.Println(x) // 15
+	fmt.Println(x) // 15 */
+
+	var numbers = []int{1, 2, 3}
+	fmt.Println(numbers)
+	changeValueOfArray(numbers)
+	fmt.Println(numbers)
 
 }
 
 func changeValue(value *int) {
 	*value = *value + 5
+}
+
+// Diziler ve slicelar referans tip olduğu için pointer kullanımı gerekmez
+func changeValueOfArray(numbers []int) {
+	numbers[0] = 100
 }
