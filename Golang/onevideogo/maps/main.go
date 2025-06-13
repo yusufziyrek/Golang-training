@@ -15,7 +15,7 @@ func main() {
 
 	fmt.Println(persons)
 
-	// Boş map oluşturul sonradan doldurulur
+	// Boş map oluşturur sonradan doldurulur
 	persons2 := make(map[string]int)
 	persons2["Akif"] = 1
 	persons2["Ilgın"] = 2

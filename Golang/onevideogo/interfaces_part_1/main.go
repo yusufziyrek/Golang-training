@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+type IShippable interface {
+	ShippingCost() int
+}
+
 type Book struct {
 	desi int
 }
@@ -24,11 +28,27 @@ func (electronic *Electronic) ShippingCost() int {
 
 func main() {
 
+	/* var product IShippable
+
+	product = &Book{desi: 10}
+	fmt.Println(product.ShippingCost())
+
+	product = &Electronic{desi: 10}
+	fmt.Println(product.ShippingCost()) */
+
+	var products []IShippable = []IShippable{
+		&Book{desi: 10},
+		&Book{desi: 20},
+		&Electronic{desi: 20},
+	}
+
+	fmt.Println(calculateTotalShippingCost(products))
+
 	/* book := &Book{desi: 10}
 	book2 := &Book{desi: 20}
 
 	fmt.Println(book.ShippingCost())
-	fmt.Println(book2.ShippingCost()) */
+	fmt.Println(book2.ShippingCost())
 
 	electronic1 := &Electronic{desi: 20}
 	fmt.Println(electronic1.ShippingCost())
@@ -36,25 +56,18 @@ func main() {
 	electronics := []Electronic{{desi: 10}, {desi: 20}}
 	calculateTotalShippingCostOfElectronics(electronics)
 
-	/* books := []Book{{desi: 10}, {desi: 20}}
+	books := []Book{{desi: 10}, {desi: 20}}
 	fmt.Println(calculateTotalShippingCostOfBooks(books)) */
 
 }
 
-func calculateTotalShippingCostOfBooks(books []Book) int {
+func calculateTotalShippingCost(products []IShippable) int {
 	total := 0
-	for _, book := range books {
-		total += book.ShippingCost()
+
+	for _, product := range products {
+		total += product.ShippingCost()
 	}
 
 	return total
-}
 
-func calculateTotalShippingCostOfElectronics(electronics []Electronic) int {
-	total := 0
-	for _, electronic := range electronics {
-		total += electronic.ShippingCost()
-	}
-
-	return total
 }
