@@ -6,6 +6,7 @@ require (
 	github.com/jackc/pgx/v4 v4.18.3
 	github.com/labstack/echo/v4 v4.13.4
 	github.com/labstack/gommon v0.4.2
+	github.com/pkg/errors v0.8.1
 	github.com/stretchr/testify v1.10.0
 )
 
